@@ -1,0 +1,76 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManagement:
+    transition: FadeTransition()
+    MainScreen:
+    AnotherScreen:
+
+<SmallNavButton@Button>:    
+    font_size: 32
+    size: 125, 50    
+    color: 0,1,0,1
+
+<MedButton@Button>:
+    font_size: 30
+    size_hint: 0.25, 0.1
+    color: 0,1,0,1
+
+<BackHomeWidget>:
+    SmallNavButton:
+        on_release: app.root.current = "main"
+        text: "Home"
+        pos: root.x, root.top - self.height
+
+<ScrollableLabel>:
+    Label:
+        id: dataentryinstructions
+        text: root.text
+        font_size: 20
+        text_size: self.width, None
+        size_hint_y: None
+        height: self.texture_size[1]
+        padding_y: 10
+        padding_x: 200
+
+<MainScreen>:
+    name: "main"
+    FloatLayout: 
+        MedButton:
+            on_release: app.root.current = "newgarage"
+            text: "Create New"
+            pos_hint: {"x":0.3728, "top": 0.4}
+
+<AnotherScreen>:
+    name: "newgarage"
+    ScrollableLabel:
+    BackHomeWidget:
+    FloatLayout:
+        MedButton:
+            text: "Begin"
+            pos_hint: {"right":1, "top": 1}
+            on_release: 
+                root.new()
+                app.goofytest()
+    FloatLayout:
+        MedButton
+            text: "1. Stuff"
+            pos_hint: {"x":0, "top": 0.75}
+        MedButton:
+            text: "2. Stuff"
+            pos_hint: {"x":0, "top": 0.6}
+        MedButton:
+            text: "3. Stuff"
+            pos_hint: {"x":0, "top": 0.45}
+        MedButton:
+            text: "4. Stuff"
+            pos_hint: {"x":0, "top": 0.3}
+        MedButton:
+            text: "5. Stuff"
+            pos_hint: {"x":0, "top": 0.15}
+        TextInput: 
+            id: input
+            multiline: False
+            hint_text:'Enter text'
+            pos_hint: {'center_x': 0, 'center_y': 0.705} 
+            size_hint: 0.95, 0.5
+            on_text: app.process() 
