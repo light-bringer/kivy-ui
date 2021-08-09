@@ -10,6 +10,6 @@ kivy-deps.sdl2==0.1.23
 Kivy-Garden==0.1.4
 Pygments==2.6.1
 pypiwin32==223
-pywin32==228
+pywin32==301
 requests==2.24.0
 urllib3==1.25.9
